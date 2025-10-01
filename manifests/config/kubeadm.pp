@@ -384,9 +384,9 @@ class kubernetes::config::kubeadm (
   }
 
   # to_yaml emits a complete YAML document, so we must remove the leading '---'
-  $kubeadm_extra_config_yaml = regsubst(stdlib::to_yaml($kubeadm_extra_config), '^---\n', '')
-  $kubelet_extra_config_yaml = regsubst(stdlib::to_yaml($kubelet_extra_config), '^---\n', '')
-  $kubelet_extra_config_alpha1_yaml = regsubst(stdlib::to_yaml($kubelet_extra_config_alpha1), '^---\n', '')
+  $kubeadm_extra_config_yaml = regsubst(to_yaml($kubeadm_extra_config), '^---\n', '')
+  $kubelet_extra_config_yaml = regsubst(to_yaml($kubelet_extra_config), '^---\n', '')
+  $kubelet_extra_config_alpha1_yaml = regsubst(to_yaml($kubelet_extra_config_alpha1), '^---\n', '')
 
   $config_version = $kubernetes_version ? {
     /^1\.1(0|1)/              => 'v1alpha1',
