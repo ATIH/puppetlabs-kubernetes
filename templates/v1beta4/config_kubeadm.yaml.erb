@@ -57,7 +57,7 @@ apiServer:
   extraArgs:
   <%- @apiserver_merged_extra_arguments.each do |arg| -%>
   - name: <%= arg.split(": ", 2)[0] %>
-    value: <%= arg.split(": ",2)[1]) %>
+    value: <%= arg.split(": ",2)[1] %>
   <%- end -%>
 <%- end -%>
 <%- if @apiserver_merged_extra_volumes -%>
