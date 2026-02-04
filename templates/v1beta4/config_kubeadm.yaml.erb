@@ -21,14 +21,6 @@ nodeRegistration:
   taints:
   - effect: NoSchedule
     key: node-role.kubernetes.io/master
-  timeouts:
-    controlPlaneComponentHealthCheck: 4m0s
-    discovery: 5m0s
-    etcdAPICall: 2m0s
-    kubeletHealthCheck: 4m0s
-    kubernetesAPICall: 1m0s
-    tlsBootstrap: 5m0s
-    upgradeManifests: 5m0s
   kubeletExtraArgs:
     <%- if @cloud_provider -%>
     cloud-provider: <%= @cloud_provider %>
@@ -45,6 +37,14 @@ skipPhases:
 - <%= skip_phase %>
 <% end -%>
 <% end -%>
+timeouts:
+  controlPlaneComponentHealthCheck: 4m0s
+  discovery: 5m0s
+  etcdAPICall: 2m0s
+  kubeletHealthCheck: 4m0s
+  kubernetesAPICall: 1m0s
+  tlsBootstrap: 5m0s
+  upgradeManifests: 5m0s
 ---
 apiServer:
 <%- if @apiserver_cert_extra_sans -%>
