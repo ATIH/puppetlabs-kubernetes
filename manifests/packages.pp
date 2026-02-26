@@ -430,7 +430,7 @@ class kubernetes::packages (
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      content => template('kubernetes/containerd/config.toml.erb'),
+      content => template($containerd_config_template),
       require => [File['/etc/containerd'], Archive[$containerd_archive]],
       notify  => Service['containerd'],
     }
